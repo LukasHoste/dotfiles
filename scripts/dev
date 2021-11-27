@@ -16,13 +16,27 @@ sudo apt install build-essential -y
 sudo apt install neofetch
 sudo apt-get install npm
 npm -g install @vue/cl
+sudo apt install screen -y
+# miniconda
+cd ~
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 chmod +x Miniconda3-latest-Linux-x86_64.sh
 ./Miniconda3-latest-Linux-x86_64.sh
-
+echo "export PATH='/home/lulu/miniconda3/bin:$PATH'" >> ~/.zshrc
+# gnu arm embedded toolchain
+cd ~
+wget https://developer.arm.com/-/media/Files/downloads/gnu-rm/10-2020q4/gcc-arm-none-eabi-10-2020-q4-major-x86_64-linux.tar.bz2
+tar -xf gcc-arm-none-eabi-10-2020-q4-major-x86_64-linux.tar.bz2
+mv gcc-arm-none-eabi-10-2020-q4-major gcc-arm-embedded
+rm gcc-arm-none-eabi-10-2020-q4-major-x86_64-linux.tar.bz2
+sudo mv gcc-arm-embedded /opt
+mbed config -G GCC_ARM_PATH /opt/gcc-arm-embedded/bin
 
 
 conda create -n mbed
+sudo apt install python3 python3-pip git mercurial -y
+python3 -m pip install mbed-cli
+mbed config -G GCC_ARM_PATH /opt/gcc-arm-embedded/bin
 
 # The end
 pause "All done - best to reboot after rest is done"

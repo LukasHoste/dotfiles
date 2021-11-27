@@ -8,5 +8,6 @@
     ~/.gitconfig: configs/git/gitconfig
     ~/.bashrc: configs/bash/bashrc
     ~/.zshrc: configs/zsh/zshrc
+    ~/.mbed: configs/mbed/mbedconfig
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
